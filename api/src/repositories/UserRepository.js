@@ -16,6 +16,14 @@ class UserRepository {
         }
         
     }
+
+    static deleteUser = async (id) => {
+        UserModel.destroy({
+            where: {
+              id: id
+            }
+          });
+    }
 }
 
 export default UserRepository

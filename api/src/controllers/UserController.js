@@ -23,7 +23,17 @@ class UserController {
         } catch (error) {
             res.status(404).send({message: error.message})
         }
-        
+    }
+
+    static deleteUser = async (req, res) => {
+        try {
+            const {id} = req.params
+            await UserRepository.deleteUser(id)
+            res.status(202).send({message: "User Deleted"})
+
+        } catch (error) {
+            res.status(404).send({message: error.message})
+        }
     }
 }
 
