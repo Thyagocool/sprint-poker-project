@@ -1,9 +1,20 @@
-import TesteModel from "../database/models/UserModel.js"
+import UserModel from "../database/models/UserModel.js"
 
 class UserRepository {
     static listUsers = async ()=> {
-        const users = await TesteModel.findAll();
+        const users = await UserModel.findAll();
         return users
+    }
+
+    static insertUsers = async (user) => {
+        const users = await UserModel.create(user)
+        
+        if(users){
+            return users
+        }else{
+            return {message: "erro"}
+        }
+        
     }
 }
 
