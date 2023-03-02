@@ -1,6 +1,4 @@
-import express from "express"
 import UserRepository from "../repositories/UserRepository.js"
-
 
 class UserController {
     static listUsers = async (req, res) => {
@@ -14,10 +12,8 @@ class UserController {
     }
 
     static insertUsers = async (req, res) => {
-        console.log('--------------------------')
         try {
             const user = req.body
-            console.log('--------------------------2')
             const users = await UserRepository.insertUsers(user)
 
             res.status(201).send({message: "User Created"})

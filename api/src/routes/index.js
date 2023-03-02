@@ -1,24 +1,19 @@
-import express from "express"
 import UserRoutes from "./UserRoutes.js"
-import NovaRota from "./NovaRotaRoutes.js"
+import AuthRoutes from "./AuthRoutes.js"
 import swaggerUi from "swagger-ui-express"
-import swaggerJsDoc from "swagger-jsdoc"
-import swaggerOptions from "../utils/swagger.js"
+import { createRequire } from "module";
 
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions)
-
-console.log(swaggerDocs)
-
-
+const require = createRequire(import.meta.url);
+const swaggerDocs = require("../utils/swagger.json")
 
 const routes = (app) => {
     app.route("/", (req, res) => {
-        res.send("Servidor Rodando")
+        res.send("Server Running")
     })
+
     app.use(
-        UserRoutes,
-        NovaRota
+        AuthRoutes,
+        UserRoutes
     )
 
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))

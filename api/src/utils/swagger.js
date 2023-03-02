@@ -11,7 +11,7 @@ const swaggerOptions = {
         }
     },
     apis: [
-            "./src/routes/UserRoutes.js"
+            "./src/routes/*.js"
         ]
 }
 

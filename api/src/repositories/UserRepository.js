@@ -1,21 +1,32 @@
 import UserModel from "../database/models/UserModel.js"
 
 class UserRepository {
-    static listUsers = async ()=> {
+    static listUsers = async () => {
         const users = await UserModel.findAll();
         return users
     }
 
+    static getUserByUsername = async (username) => {
+        const response = await UserModel.findOne({
+            where: {username}
+        });
+        return response
+    }
+
+    static getUserByUsernameAndPassword = async (username, password) => {
+        const response = await UserModel.findOne({
+            where: {
+                username, password
+            }
+        });
+        return response
+    }
+
     static insertUsers = async (user) => {
-        console.log('--------------------------3', user)
         const users = await UserModel.create(user)
-        console.log('--------------------------4', users)
-        if(users){
-            return users
-        }else{
-            return {message: "erro"}
-        }
         
+        if(users) return users
+        return {message: "erro"}
     }
 
     static deleteUser = async (id) => {
