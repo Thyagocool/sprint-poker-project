@@ -1,5 +1,5 @@
 import database from "../config/connection.js"
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Sequelize } from 'sequelize';
 
 const UserModel = database.define('user', {
     id: {

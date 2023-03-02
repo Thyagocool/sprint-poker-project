@@ -1,5 +1,6 @@
 const swaggerOptions = {
     swaggerDefinition: {
+        openapi: "3.0.0",
         info: {
             title: "Sprint poker api",
             description: "Alguma descrição",
