@@ -7,9 +7,7 @@ class UserRepository {
     }
 
     static insertUsers = async (user) => {
-        console.log('--------------------------3', user)
         const users = await UserModel.create(user)
-        console.log('--------------------------4', users)
         if(users){
             return users
         }else{

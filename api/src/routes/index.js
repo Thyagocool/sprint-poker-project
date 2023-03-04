@@ -5,12 +5,9 @@ import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc"
 import swaggerOptions from "../utils/swagger.js"
 
+import swaggerOutput from "../utils/swagger-output.json" assert { type: "json" };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
-
-console.log(swaggerDocs)
-
-
 
 const routes = (app) => {
     app.route("/", (req, res) => {
@@ -21,7 +18,8 @@ const routes = (app) => {
         NovaRota
     )
 
-    app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+    app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerOutput))
+    
 }
 
 export default routes

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon ./src/app.js",
+    "swagger-autogen": "node ./src/utils/swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "swagger-ui-express": "^4.6.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "swagger-autogen": "^2.23.1"
   }
 }
