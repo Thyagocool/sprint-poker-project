@@ -1,16 +1,8 @@
-import express from "express"
-import routes from "./routes/index.js"
-import database from "./database/config/connection.js"
+const express = require( "express")
+const routes = require( "./routes/index.js")
 
 const app = express()
 app.use(express.json())
-
-try {
-    const resultado = await database.sync();
-
-} catch (error) {
-    console.error(error)
-}
 
 routes(app)
 

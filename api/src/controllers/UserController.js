@@ -1,5 +1,5 @@
-import express from "express"
-import UserRepository from "../repositories/UserRepository.js"
+const express = require("express")
+const UserRepository = require("../repositories/UserRepository.js")
 
 
 class UserController {
@@ -37,4 +37,4 @@ class UserController {
     }
 }
 
-export default UserController
+module.exports = UserController

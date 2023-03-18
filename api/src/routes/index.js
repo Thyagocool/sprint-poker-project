@@ -1,28 +1,34 @@
-import express from "express"
-import UserRoutes from "./UserRoutes.js"
-import NovaRota from "./NovaRotaRoutes.js"
-import swaggerUi from "swagger-ui-express"
-import swaggerJsDoc from "swagger-jsdoc"
-import swaggerOptions from "../utils/swagger.js"
+const express = require("express")
+const userRoutes = require("./userRoutes.js")
+const typeUserRoutes = require("./typeUserRoutes")
 
-import swaggerOutput from "../utils/swagger-output.json" assert { type: "json" };
 
+
+
+const swaggerUi = require("swagger-ui-express")
+const swaggerJsDoc = require("swagger-jsdoc")
+const swaggerOptions = require("../utils/swagger.js")
+const swaggerOutput = require("../utils/swagger-output.json") // assert { type: "json" };
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
+
+
+
+
 
 const routes = (app) => {
     app.route("/", (req, res) => {
         res.send("Servidor Rodando")
     })
     app.use(
-        UserRoutes,
-        NovaRota
+        userRoutes,
+        typeUserRoutes
     )
 
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerOutput))
     
 }
 
-export default routes
+module.exports = routes
 
 
 

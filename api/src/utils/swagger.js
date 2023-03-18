@@ -1,4 +1,4 @@
-import swaggerAutogen from 'swagger-autogen';
+const swaggerAutogen = require("swagger-autogen")
 
 const swaggerOptions = {
     swaggerDefinition: {
@@ -37,4 +37,4 @@ const endpointsFiles = [
     await import('../app.js'); // Your project's root file
   });
 
-export default swaggerOptions
+module.exports = swaggerOptions

@@ -1,17 +1,17 @@
 const database = require("../config/connection.js")
 const { Sequelize, Model, DataTypes } = require('sequelize')
 
-const userModel = database.define('user', {
+const typeUser = database.define('typeuser', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    username: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false
     }
 })
  
-module.exports = userModel
+module.exports = typeUser

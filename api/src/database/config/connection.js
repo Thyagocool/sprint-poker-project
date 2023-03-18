@@ -1,10 +1,8 @@
-import { Sequelize} from 'sequelize';
+const { Sequelize} = require('sequelize')
+const optionsDatabase = require("./database")
 
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database.sqlite'
-  })
+const sequelize = new Sequelize(
+  optionsDatabase
+)
 
-
-
-export default sequelize
+module.exports = sequelize

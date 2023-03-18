@@ -1,13 +1,13 @@
-import UserModel from "../database/models/UserModel.js"
+const userModel = require("../database/models/userModel")
 
 class UserRepository {
     static listUsers = async ()=> {
-        const users = await UserModel.findAll();
+        const users = await userModel.findAll();
         return users
     }
 
     static insertUsers = async (user) => {
-        const users = await UserModel.create(user)
+        const users = await userModel.create(user)
         if(users){
             return users
         }else{
@@ -17,7 +17,7 @@ class UserRepository {
     }
 
     static deleteUser = async (id) => {
-        UserModel.destroy({
+        userModel.destroy({
             where: {
               id: id
             }
@@ -25,4 +25,4 @@ class UserRepository {
     }
 }
 
-export default UserRepository
+module.exports = UserRepository

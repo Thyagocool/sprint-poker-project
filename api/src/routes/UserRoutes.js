@@ -1,5 +1,5 @@
-import exress from "express"
-import UserController from "../controllers/UserController.js"
+const exress = require ("express")
+const UserController = require ("../controllers/UserController.js")
 
 const routes = exress.Router()
 
@@ -10,4 +10,4 @@ routes
     .put("/users/:id", UserController.deleteUser)
 
 
-export default routes
+module.exports = routes
