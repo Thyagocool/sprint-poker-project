@@ -9,7 +9,7 @@ const swaggerOptions = {
                 name: "",
                 phone: ""
             },
-            servers: ["http://localhost:3001"]
+            servers: ["http://localhost:3000"]
         }
     },
     options : {
