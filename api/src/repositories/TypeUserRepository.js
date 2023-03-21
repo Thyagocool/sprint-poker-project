@@ -1,4 +1,4 @@
-const typeUserModel = require("../database/models/typeUser")
+const typeUserModel = require("../database/models/typeUserModel")
 
 class TypeRepository {
     static listTypeUsers = async ()=> {

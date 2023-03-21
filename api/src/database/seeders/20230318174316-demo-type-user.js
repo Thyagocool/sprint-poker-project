@@ -1,4 +1,3 @@
-'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -9,11 +8,11 @@ module.exports = {
       {name: 'Scrum Master'},
       {name: 'PO'},
       {name: 'maintainer'}
-    ], {});
+    ], {})
     
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('typeusers', null, {});
+    await queryInterface.bulkDelete('typeusers', null, {})
   }
-};
+}

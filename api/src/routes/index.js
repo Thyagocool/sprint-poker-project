@@ -8,7 +8,7 @@ const typeUserRoutes = require("./typeUserRoutes")
 const swaggerUi = require("swagger-ui-express")
 const swaggerJsDoc = require("swagger-jsdoc")
 const swaggerOptions = require("../utils/swagger.js")
-const swaggerOutput = require("../utils/swagger-output.json") // assert { type: "json" };
+const swaggerOutput = require("../utils/swagger-output.json")
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
 
 

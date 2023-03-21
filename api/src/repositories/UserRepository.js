@@ -1,28 +1,22 @@
-const userModel = require("../database/models/userModel")
+const UserModel = require("../database/models/UserModel.js")
+const typeUserModel = require("../database/models/typeUserModel");
+const Repository = require("./Repository.js");
 
-class UserRepository {
-    static listUsers = async ()=> {
-        const users = await userModel.findAll();
+class UserRepository extends Repository{
+    constructor(){
+        super(UserModel)
+    }
+    
+    async listAllUsers() {
+        const users = await UserModel.findAll({ include: typeUserModel });
         return users
     }
 
-    static insertUsers = async (user) => {
-        const users = await userModel.create(user)
-        if(users){
-            return users
-        }else{
-            return {message: "erro"}
-        }
-        
+    async findOneUserById(id) {
+        const data = await UserModel.findByPk(id, { include: typeUserModel })
+        return data
     }
 
-    static deleteUser = async (id) => {
-        userModel.destroy({
-            where: {
-              id: id
-            }
-          });
-    }
 }
 
 module.exports = UserRepository

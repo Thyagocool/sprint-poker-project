@@ -26,15 +26,15 @@ const swaggerOptions = {
         ]
 }
 
-const outputFile = "./src/utils/swagger-output.json";
+const outputFile = "./src/utils/swagger-output.json"
 const endpointsFiles = [
                         "./src/routes/*Routes.js" 
-                    ];
+                    ]
 
-// swaggerAutogen(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition);
+// swaggerAutogen(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition)
 
    swaggerAutogen(swaggerOptions.options)(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition).then(async () => {
-    await import('../app.js'); // Your project's root file
-  });
+    await import('../app.js') // Your project's root file
+  })
 
 module.exports = swaggerOptions

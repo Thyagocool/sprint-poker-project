@@ -1,7 +1,7 @@
 const database = require("../config/connection.js")
 const { Sequelize, Model, DataTypes } = require('sequelize')
 
-const typeUser = database.define('typeuser', {
+const typeUserModel = database.define('typeuser', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,5 +13,12 @@ const typeUser = database.define('typeuser', {
         allowNull: false
     }
 })
+
+typeUserModel.associate = (models) => {
+    typeUserModel.hasMany(models.userModel,{
+        foreignKey: 'typeUser_id',
+        as: 'typeUser'
+    })
+}
  
-module.exports = typeUser
+module.exports = typeUserModel
