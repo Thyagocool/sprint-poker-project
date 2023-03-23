@@ -13,8 +13,8 @@ const swaggerOptions = {
         }
     },
     options : {
-        openapi: true,          // Enable/Disable OpenAPI. By default is null
-        language: 'en-US',         // Change response language. By default is 'en-US'
+        openapi: true,         // Enable/Disable OpenAPI. By default is null
+        language: 'en-US',     // Change response language. By default is 'en-US'
         disableLogs: true,     // Enable/Disable logs. By default is false
         autoHeaders: true,     // Enable/Disable automatic headers capture. By default is true
         autoQuery: true,       // Enable/Disable automatic query capture. By default is true
@@ -33,8 +33,9 @@ const endpointsFiles = [
 
 // swaggerAutogen(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition)
 
-   swaggerAutogen(swaggerOptions.options)(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition).then(async () => {
-    await import('../app.js') // Your project's root file
-  })
+swaggerAutogen(swaggerOptions.options)(outputFile, endpointsFiles, swaggerOptions.swaggerDefinition)
+    .then(async () => {
+        await import('../app.js') // Your project's root file
+    })
 
 module.exports = swaggerOptions

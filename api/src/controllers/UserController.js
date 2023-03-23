@@ -4,18 +4,34 @@ const UserRepository = require("../repositories/UserRepository.js")
 const userRepository = new UserRepository(UserModel)
 
 class UserController {
+
     static listUsers = async (req, res) => {
+ 
+        
+        // #swagger.path = '/user'
+        // #swagger.method = 'get'
+        // #swagger.description = 'Get All Users'
+        // #swagger.produces = ["application/json"]
+        // #swagger.tags = ['Users']
+        
         try {
             const users = await userRepository.selectAll()
-            
-            res.status(200).json(users)
+
+            res.status(200).json(users) // #swagger.responses[200]
             
         } catch (error) {
-            res.status(404).send({message: error.message})
+            res.status(404).send({message: error.message}) // #swagger.responses[404]
         }
     }    
 
     static listUserTypeUser = async (req, res) => {
+        /*
+        #swagger.path = '/user'
+        #swagger.method = 'get'
+        #swagger.description = 'Get All Users with Type User'
+        #swagger.produces = ["application/json"]
+        #swagger.tags = ['Users']
+        */        
         try {
             const users = await userRepository.listAllUsers()
             
@@ -31,6 +47,17 @@ class UserController {
         try {
             const { id } = req.params
             const user = await userRepository.findOneUserById(id)
+            res.status(200).json(user)
+            
+        } catch (error) {
+            res.status(400).send({message: error.message})
+        }
+    }
+
+    static findUserByUsername = async (req, res) => {
+        try {
+            const { username } = req.params
+            const user = await userRepository.getUserByUsername(username)
             res.status(200).json(user)
             
         } catch (error) {

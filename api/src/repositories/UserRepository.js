@@ -17,6 +17,20 @@ class UserRepository extends Repository{
         return data
     }
 
+    async getUserByUsername(username){
+        const data = await UserModel.findAll({ where : { username : username }}, { include: typeUserModel });
+        return data
+    }
+
+    static getUserByUsernameAndPassword = async (username, password) => {
+        const response = await UserModel.findOne({
+            where: {
+                username
+            }
+        });
+        return response
+    }    
+
 }
 
 module.exports = UserRepository
